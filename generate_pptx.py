@@ -90,6 +90,22 @@ def _accent_bar(slide, top):
     _add_rect(slide, Inches(0.5), top, Inches(1.2), Pt(4), ACCENT)
 
 
+def _style_cell(cell, text, bold=False, bg=None, fg=WHITE, size=13):
+    cell.text = ""
+    p = cell.text_frame.paragraphs[0]
+    p.alignment = PP_ALIGN.LEFT
+    run = p.add_run()
+    run.text = text
+    run.font.size = Pt(size)
+    run.font.bold = bold
+    run.font.color.rgb = fg
+    run.font.name = "Segoe UI"
+    cell.vertical_anchor = MSO_ANCHOR.MIDDLE
+    if bg:
+        cell.fill.solid()
+        cell.fill.fore_color.rgb = bg
+
+
 # ── Slide 1: Title ──────────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])  # blank
@@ -123,7 +139,8 @@ topics = [
     ("3.", "AI Infrastructure & Hardware"),
     ("4.", "Azure Data Services for AI"),
     ("5.", "Agentic AI & Frameworks"),
-    ("6.", "Key Model Quick-Reference Table"),
+    ("6.", "Model Deprecations & Retirements"),
+    ("7.", "Key Model Quick-Reference Table"),
 ]
 y = Inches(1.8)
 for num, topic in topics:
@@ -308,7 +325,77 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 10: Model Quick-Reference Table ───────────────────────────────────
+# ── Slide 10: Deprecations – Already Retired & Upcoming ─────────────────────
+
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+_set_bg(slide, DARK_BG)
+_add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
+_add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+              "Model Deprecations & Retirements", font_size=34, bold=True, color=WHITE)
+_accent_bar(slide, Inches(1.1))
+
+# Table – key retirements
+ret_rows, ret_cols = 8, 4
+tbl_shape = slide.shapes.add_table(ret_rows, ret_cols, Inches(0.5), Inches(1.5),
+                                    Inches(12.3), Inches(4.6))
+ret_table = tbl_shape.table
+ret_table.columns[0].width = Inches(3.5)
+ret_table.columns[1].width = Inches(2.2)
+ret_table.columns[2].width = Inches(3.8)
+ret_table.columns[3].width = Inches(2.8)
+
+ret_headers = ["Model", "Type", "Deprecation", "Retirement"]
+ret_data = [
+    ["o1 (2024-12-17)", "Standard", "Dec 17, 2025", "Jul 15, 2026"],
+    ["o3-mini (2025-01-31)", "Standard", "Jan 31, 2026", "Aug 2, 2026"],
+    ["gpt-5-chat (preview)", "Preview", "\u2013", "Mar 1, 2026"],
+    ["gpt-4o (all GA versions)", "Standard", "\u2013", "Mar 31, 2026"],
+    ["gpt-4o-mini (2024-07-18)", "Standard", "\u2013", "Mar 31, 2026"],
+    ["gpt-4.1 family", "GA", "Apr 14, 2026 (dep)", "Oct 14, 2026"],
+    ["gpt-4.1-nano", "GA", "Apr 14, 2026 (dep)", "Oct 14, 2026"],
+]
+
+for i, h in enumerate(ret_headers):
+    _style_cell(ret_table.cell(0, i), h, bold=True, bg=ACCENT, fg=WHITE, size=14)
+
+row_bg = [RGBColor(0x2A, 0x2A, 0x2A), RGBColor(0x22, 0x22, 0x22)]
+for r, row_data in enumerate(ret_data):
+    bg = row_bg[r % 2]
+    for c, val in enumerate(row_data):
+        _style_cell(ret_table.cell(r + 1, c), val, bg=bg, fg=WHITE)
+
+_add_text_box(slide, Inches(0.5), Inches(6.3), Inches(12.3), Inches(0.4),
+              "Auto-upgrades for gpt-4o Standard begin Mar 9, 2026. Review your deployments & test with latest versions.",
+              font_size=13, color=RGBColor(0xFF, 0xA5, 0x00))
+
+
+# ── Slide 11: Deprecation Action Items ──────────────────────────────────────
+
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+_set_bg(slide, DARK_BG)
+_add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
+_add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+              "Retirement Action Items", font_size=34, bold=True, color=WHITE)
+_accent_bar(slide, Inches(1.1))
+
+items = [
+    ("Audit Current Deployments",
+     "Identify all deployments using deprecated or soon-to-retire model versions. "
+     "Prioritise gpt-4o Standard and o1 workloads."),
+    ("Test with Latest GA Versions",
+     "Validate application behaviour on current GA models before auto-upgrades "
+     "take effect (gpt-4o auto-upgrade starts Mar 9, 2026)."),
+    ("Migrate Fine-Tuned Models",
+     "Fine-tuned deployments on retired bases are NOT auto-upgraded. "
+     "Re-train on a supported base model before the retirement date."),
+    ("Monitor the Retirements Page",
+     "Bookmark learn.microsoft.com/azure/ai-foundry/openai/concepts/model-retirements "
+     "for the latest schedule and replacement recommendations."),
+]
+_add_bullet_slide(slide, items, Inches(1.5))
+
+
+# ── Slide 12: Model Quick-Reference Table ───────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -341,21 +428,6 @@ data = [
     ["gpt-4o-mini-tts", "Text-to-Speech", "Best multilingual synthesis", "GA"],
 ]
 
-def _style_cell(cell, text, bold=False, bg=None, fg=WHITE, size=13):
-    cell.text = ""
-    p = cell.text_frame.paragraphs[0]
-    p.alignment = PP_ALIGN.LEFT
-    run = p.add_run()
-    run.text = text
-    run.font.size = Pt(size)
-    run.font.bold = bold
-    run.font.color.rgb = fg
-    run.font.name = "Segoe UI"
-    cell.vertical_anchor = MSO_ANCHOR.MIDDLE
-    if bg:
-        cell.fill.solid()
-        cell.fill.fore_color.rgb = bg
-
 for i, h in enumerate(headers):
     _style_cell(table.cell(0, i), h, bold=True, bg=ACCENT, fg=WHITE, size=14)
 
@@ -366,7 +438,7 @@ for r, row_data in enumerate(data):
         _style_cell(table.cell(r + 1, c), val, bg=bg, fg=WHITE)
 
 
-# ── Slide 11: Key Links ─────────────────────────────────────────────────────
+# ── Slide 13: Key Links ─────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -379,6 +451,7 @@ links = [
     ("Microsoft Foundry Portal", "https://ai.azure.com/"),
     ("Foundry Product Page", "https://azure.microsoft.com/en-us/products/ai-foundry/"),
     ("Azure OpenAI What\u2019s New", "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/whats-new"),
+    ("Model Retirements", "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements"),
     ("Azure AI Blog", "https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/"),
     ("Foundry Tech Community", "https://techcommunity.microsoft.com/category/azure-ai-foundry/blog/azure-ai-foundry-blog/"),
     ("Foundry Models Catalog", "https://azure.microsoft.com/en-us/products/ai-foundry/models/"),
@@ -395,7 +468,7 @@ for name, url in links:
     y += Inches(0.55)
 
 
-# ── Slide 12: Closing ───────────────────────────────────────────────────────
+# ── Slide 14: Closing ───────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
