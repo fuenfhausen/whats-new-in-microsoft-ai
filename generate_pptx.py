@@ -138,8 +138,9 @@ topics = [
     ("2.", "AI Infrastructure & Hardware"),
     ("3.", "Azure Data Services for AI"),
     ("4.", "Agentic AI & Frameworks"),
-    ("5.", "Model Deprecations & Retirements"),
-    ("6.", "Key February 2026 Quick-Reference Table"),
+    ("5.", "Foundry Blog Highlights"),
+    ("6.", "Model Deprecations & Retirements"),
+    ("7.", "Key February 2026 Quick-Reference Table"),
 ]
 y = Inches(1.8)
 for num, topic in topics:
@@ -238,7 +239,35 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 7: Deprecations – Imminent Retirements ────────────────────────────
+# ── Slide 7: Foundry Blog Highlights ────────────────────────────────────────
+
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+_set_bg(slide, DARK_BG)
+_add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
+_add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+              "Foundry Blog Highlights (Feb 2026)", font_size=34, bold=True, color=WHITE)
+_accent_bar(slide, Inches(1.1))
+
+items = [
+    ("Microsoft Agent Framework \u2013 Release Candidate (Feb 19)",
+     "Successor to Semantic Kernel & AutoGen. Stable API for v1.0 in .NET & Python. "
+     "Graph-based workflows, multi-provider support (Foundry, OpenAI, Claude, Bedrock, Ollama), "
+     "A2A / AG-UI / MCP interoperability."),
+    ("What\u2019s New in Foundry | Dec 2025 & Jan 2026 (Feb 18)",
+     "Comprehensive roundup: GPT-5.2 GA, Codex Max GA, Mistral Large 3, DeepSeek V3.2, "
+     "Kimi-K2 Thinking, Cohere Rerank 4, GPT-image-1.5 GA, FLUX.2 [pro], Memory in Agent Service, "
+     "A2A Tool, Computer Use, Foundry MCP Server, azure-ai-projects v2 beta."),
+    ("DPO Fine-Tuning Using Foundry SDK (Feb 13)",
+     "Guide to Direct Preference Optimization \u2013 learn from human preference pairs "
+     "to align model behaviour without a separate reward model."),
+    ("Beyond the Prompt \u2013 Why & How to Fine-tune (Feb 6)",
+     "When prompt engineering & RAG aren\u2019t enough: fine-tuning for consistent, "
+     "policy-compliant outputs at enterprise scale."),
+]
+_add_bullet_slide(slide, items, Inches(1.5))
+
+
+# ── Slide 8: Deprecations – Imminent Retirements ────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -281,7 +310,7 @@ _add_text_box(slide, Inches(0.5), Inches(5.5), Inches(12.3), Inches(0.4),
               font_size=13, color=RGBColor(0xFF, 0xA5, 0x00))
 
 
-# ── Slide 8: Deprecation Action Items ───────────────────────────────────────
+# ── Slide 9: Deprecation Action Items ───────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -306,7 +335,7 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 9: February 2026 Quick-Reference Table ────────────────────────────
+# ── Slide 10: February 2026 Quick-Reference Table ────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -316,9 +345,9 @@ _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
 _accent_bar(slide, Inches(1.1))
 
 # Table
-rows, cols = 8, 4
+rows, cols = 12, 4
 tbl_shape = slide.shapes.add_table(rows, cols, Inches(0.5), Inches(1.5),
-                                    Inches(12.3), Inches(4.8))
+                                    Inches(12.3), Inches(5.4))
 table = tbl_shape.table
 
 # Column widths
@@ -336,6 +365,10 @@ data = [
     ["Agentic Cloud Ops", "Framework", "AI agents for cloud operations & incident response", "Feb 11"],
     ["Pantone Case Study", "Ecosystem", "Agentic AI + AI-ready database in production", "Feb 12"],
     ["Agents League", "Community", "Developer challenge for building AI agents", "Feb 16\u201327"],
+    ["Agent Framework RC", "Foundry Blog", "Successor to SK & AutoGen hits Release Candidate", "Feb 19"],
+    ["Foundry What\u2019s New", "Foundry Blog", "GPT-5.2, Codex Max, A2A, Memory, MCP roundup", "Feb 18"],
+    ["DPO Fine-Tuning Guide", "Foundry Blog", "DPO walkthrough using Foundry SDK", "Feb 13"],
+    ["Fine-Tuning Guide", "Foundry Blog", "When & how to move beyond prompting", "Feb 6"],
 ]
 
 for i, h in enumerate(headers):
@@ -348,7 +381,7 @@ for r, row_data in enumerate(data):
         _style_cell(table.cell(r + 1, c), val, bg=bg, fg=WHITE)
 
 
-# ── Slide 10: Key Links ─────────────────────────────────────────────────────
+# ── Slide 11: Key Links ─────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -360,6 +393,7 @@ _accent_bar(slide, Inches(1.1))
 links = [
     ("Microsoft Foundry Portal", "https://ai.azure.com/"),
     ("Foundry Product Page", "https://azure.microsoft.com/en-us/products/ai-foundry/"),
+    ("Foundry Dev Blog", "https://devblogs.microsoft.com/foundry/"),
     ("Azure OpenAI What\u2019s New", "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/whats-new"),
     ("Model Retirements", "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements"),
     ("Azure AI Blog", "https://azure.microsoft.com/en-us/blog/category/ai-machine-learning/"),
@@ -378,7 +412,7 @@ for name, url in links:
     y += Inches(0.55)
 
 
-# ── Slide 11: Closing ───────────────────────────────────────────────────────
+# ── Slide 12: Closing ───────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)

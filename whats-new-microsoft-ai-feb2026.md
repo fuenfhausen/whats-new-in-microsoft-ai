@@ -13,6 +13,7 @@
 - [AI Infrastructure & Hardware](#ai-infrastructure--hardware)
 - [Azure Data Services for AI](#azure-data-services-for-ai)
 - [Agentic AI & Frameworks](#agentic-ai--frameworks)
+- [Foundry Blog Highlights](#foundry-blog-highlights)
 - [Industry & Ecosystem](#industry--ecosystem)
 
 ---
@@ -104,6 +105,46 @@
 
 ---
 
+## Foundry Blog Highlights
+
+Key posts from the [Microsoft Foundry Blog](https://devblogs.microsoft.com/foundry/) published in February 2026.
+
+### Microsoft Agent Framework Reaches Release Candidate
+
+- **Date:** February 19, 2026
+- **Description:** Microsoft Agent Framework — the successor to Semantic Kernel and AutoGen — has reached Release Candidate status for both .NET and Python. The API surface is stable and all v1.0 features are complete. The framework provides simple agent creation, type-safe function tools, graph-based workflows (sequential, concurrent, handoff, group chat), multi-provider support (Foundry, Azure OpenAI, OpenAI, GitHub Copilot, Anthropic Claude, AWS Bedrock, Ollama), and interoperability via A2A, AG-UI, and MCP standards.
+- **Affected Services:** Microsoft Foundry, Agent Framework, Semantic Kernel, AutoGen
+- **Links:**
+  - [Blog Post](https://devblogs.microsoft.com/foundry/microsoft-agent-framework-reaches-release-candidate/)
+  - [Documentation](https://learn.microsoft.com/en-us/agent-framework/)
+  - [GitHub](https://github.com/microsoft/agent-framework)
+
+### What's New in Microsoft Foundry | Dec 2025 & Jan 2026
+
+- **Date:** February 18, 2026
+- **Description:** Comprehensive roundup covering GPT-5.2 GA, GPT-5.1 Codex Max GA (77.9% SWE-Bench, 400K context, 50+ languages), Mistral Large 3, DeepSeek V3.2, Kimi-K2 Thinking, Cohere Rerank 4, GPT-image-1.5 GA, FLUX.2 [pro], updated audio models (Realtime Mini, ASR, TTS), new fine-tuning base models, Memory in Foundry Agent Service (preview), A2A Tool (preview), Computer Use (preview), Foundry MCP Server (preview), VS Code extension updates, and azure-ai-projects v2 beta SDK consolidation. Also covers AzureML SDK v1 EOL (June 30, 2026).
+- **Affected Services:** Microsoft Foundry, Azure OpenAI Service, Foundry Agent Service, Azure AI SDKs
+- **Links:**
+  - [Blog Post](https://devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-dec-2025-jan-2026/)
+
+### DPO Fine-Tuning Using Microsoft Foundry SDK
+
+- **Date:** February 13, 2026
+- **Description:** Deep-dive guide on Direct Preference Optimization (DPO) fine-tuning using the Microsoft Foundry SDK. Covers how DPO simplifies model alignment by learning directly from human preference pairs without a separate reward model, delivering precise control over model behavior for safety, helpfulness, and style.
+- **Affected Services:** Microsoft Foundry, Azure OpenAI Fine-Tuning
+- **Links:**
+  - [Blog Post](https://devblogs.microsoft.com/foundry/dpo-fine-tuning-using-microsoft-foundry-sdk/)
+
+### Beyond the Prompt – Why and How to Fine-tune Your Own Models
+
+- **Date:** February 6, 2026
+- **Description:** Explores when and why to move beyond prompt engineering and RAG to fine-tuning. Covers how fine-tuning customizes a pretrained model with additional training to improve performance, add new skills, or ensure consistent, policy-compliant outputs at scale — addressing the behavioral alignment gap that prompting alone cannot solve.
+- **Affected Services:** Microsoft Foundry, Azure OpenAI Fine-Tuning
+- **Links:**
+  - [Blog Post](https://devblogs.microsoft.com/foundry/beyond-the-prompt-why-and-how-to-fine-tune-your-own-models/)
+
+---
+
 ## Model Deprecations & Retirements
 
 Understanding Azure OpenAI model lifecycles is critical for planning. **Deprecation** means a model is no longer available to new customers but continues working for existing deployments. **Retirement** means the model is fully removed and all deployments return errors.
@@ -164,6 +205,10 @@ Understanding Azure OpenAI model lifecycles is critical for planning. **Deprecat
 | Agentic Cloud Ops | Framework | Feb 11 | AI agents for cloud operations & incident response |
 | Pantone Case Study | Ecosystem | Feb 12 | Agentic AI + AI-ready database in production |
 | Agents League | Community | Feb 16–27 | Developer challenge for building AI agents |
+| Agent Framework RC | Foundry Blog | Feb 19 | Successor to Semantic Kernel & AutoGen hits Release Candidate |
+| Foundry What's New | Foundry Blog | Feb 18 | Comprehensive Dec/Jan roundup (GPT-5.2, Codex Max, A2A, Memory, MCP) |
+| DPO Fine-Tuning Guide | Foundry Blog | Feb 13 | DPO fine-tuning walkthrough using Foundry SDK |
+| Fine-Tuning Guide | Foundry Blog | Feb 6 | When & how to move beyond prompting to fine-tuning |
 
 ---
 
