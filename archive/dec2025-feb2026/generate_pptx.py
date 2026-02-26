@@ -1,4 +1,4 @@
-"""Generate a PowerPoint deck summarizing what's new in Microsoft AI (February 2026)."""
+"""Generate a PowerPoint deck summarizing what's new in Microsoft AI (Dec 2025 - Feb 2026)."""
 
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
@@ -118,7 +118,7 @@ _add_text_box(slide, Inches(0.8), Inches(3.0), Inches(11), Inches(1),
               "Microsoft Foundry, Azure OpenAI Service & Related Platforms",
               font_size=24, color=LIGHT_GRAY)
 _add_text_box(slide, Inches(0.8), Inches(4.2), Inches(11), Inches(0.8),
-              "February 2026", font_size=20, color=ACCENT)
+              "December 2025 \u2013 February 2026", font_size=20, color=ACCENT)
 _add_text_box(slide, Inches(0.8), Inches(6.2), Inches(11), Inches(0.6),
               "Sources: Azure Blog, Microsoft Learn, Microsoft Tech Community",
               font_size=14, color=LIGHT_GRAY)
@@ -134,12 +134,13 @@ _add_text_box(slide, Inches(0.8), Inches(0.5), Inches(11), Inches(0.8),
 _accent_bar(slide, Inches(1.3))
 
 topics = [
-    ("1.", "New Models in Microsoft Foundry"),
-    ("2.", "AI Infrastructure & Hardware"),
-    ("3.", "Azure Data Services for AI"),
-    ("4.", "Agentic AI & Frameworks"),
-    ("5.", "Model Deprecations & Retirements"),
-    ("6.", "Key February 2026 Quick-Reference Table"),
+    ("1.", "Microsoft Foundry Platform Updates"),
+    ("2.", "New Models & Azure OpenAI Service"),
+    ("3.", "AI Infrastructure & Hardware"),
+    ("4.", "Azure Data Services for AI"),
+    ("5.", "Agentic AI & Frameworks"),
+    ("6.", "Model Deprecations & Retirements"),
+    ("7.", "Key Model Quick-Reference Table"),
 ]
 y = Inches(1.8)
 for num, topic in topics:
@@ -150,7 +151,59 @@ for num, topic in topics:
     y += Inches(0.65)
 
 
-# ── Slide 3: New Models – Claude in Foundry ─────────────────────────────────
+# ── Slide 3: Microsoft Foundry ──────────────────────────────────────────────
+
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+_set_bg(slide, DARK_BG)
+_add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
+_add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+              "Microsoft Foundry Platform", font_size=34, bold=True, color=WHITE)
+_accent_bar(slide, Inches(1.1))
+
+items = [
+    ("Azure AI Foundry \u2192 Microsoft Foundry Rebrand",
+     "Unified platform for building, deploying & governing AI apps and multi-agent systems. "
+     "Includes Foundry IQ, Tools (1,400+ connectors), Agent Service, Control Plane, Models & Local."),
+    ("Gartner MQ Leader \u2013 AI App Development Platforms (Dec 17, 2025)",
+     "Positioned furthest for Completeness of Vision. 80,000+ enterprises using Foundry. "
+     "Microsoft used its own AI agents to prepare the Gartner submission."),
+    ("Foundry Key Pillars",
+     "\u2022 Foundry IQ \u2013 Secure data grounding API for enterprise data\n"
+     "\u2022 Foundry Agent Service \u2013 Multi-agent orchestration\n"
+     "\u2022 Foundry Control Plane \u2013 Org-wide governance & observability\n"
+     "\u2022 Foundry Local \u2013 On-device AI for low-latency / offline scenarios"),
+]
+_add_bullet_slide(slide, items, Inches(1.5))
+
+
+# ── Slide 4: New Models - GPT-5.2 ───────────────────────────────────────────
+
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+_set_bg(slide, DARK_BG)
+_add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
+_add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+              "GPT-5.2 \u2013 The New Enterprise Standard", font_size=34, bold=True, color=WHITE)
+_accent_bar(slide, Inches(1.1))
+
+items = [
+    ("GPT-5.2 (GA \u2013 Dec 11, 2025)",
+     "Deeper logical chains, richer context handling, agentic execution. "
+     "Generates design docs, runnable code, unit tests & deployment scripts with fewer iterations."),
+    ("GPT-5.2-Chat (GA)",
+     "Everyday workhorse optimized for info-seeking, technical writing, translation, "
+     "career guidance & studying. Clear improvements over GPT-5.1-Chat."),
+    ("Key Capabilities",
+     "\u2022 Multi-step logical chains with explainable plans\n"
+     "\u2022 Context-aware planning over large inputs (codebases, briefs)\n"
+     "\u2022 Agentic execution across design \u2192 implementation \u2192 testing \u2192 deployment\n"
+     "\u2022 Enterprise-grade safety, managed identities & policy enforcement"),
+    ("Pricing",
+     "GPT-5.2 Global Standard: $1.75 / million input tokens, $14.00 / million output tokens"),
+]
+_add_bullet_slide(slide, items, Inches(1.5))
+
+
+# ── Slide 5: New Models - Claude ─────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -166,15 +219,40 @@ items = [
     ("Claude Sonnet 4.6 (Feb 17, 2026)",
      "Frontier performance across coding, agents & professional work at scale. "
      "Complements Opus for teams needing a balance of performance and throughput."),
-    ("Why It Matters",
-     "\u2022 Broadens the model catalog in Microsoft Foundry beyond OpenAI\n"
-     "\u2022 Enterprise-grade security, compliance & governance through Foundry Control Plane\n"
-     "\u2022 Enables customers to choose the best model per workload"),
+    ("Claude for Healthcare & Life Sciences (Jan 11, 2026)",
+     "New tools, connectors & skills purpose-built for clinical, pharmaceutical "
+     "and life sciences use cases \u2013 advanced reasoning & agentic workflows for healthcare."),
 ]
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 4: AI Infrastructure & Hardware ────────────────────────────────────
+# ── Slide 6: New Models - Multimodal / Audio ─────────────────────────────────
+
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+_set_bg(slide, DARK_BG)
+_add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
+_add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+              "Image & Audio Model Updates (Dec 2025)", font_size=34, bold=True, color=WHITE)
+_accent_bar(slide, Inches(1.1))
+
+items = [
+    ("GPT-image-1.5 (Limited Access)",
+     "Latest image generation: inpainting, face preservation, image editing, up to 1536\u00d71024px. "
+     "Successor to GPT-image-1 with improved quality & editing controls."),
+    ("gpt-4o-mini-transcribe-2025-12-15 (ASR)",
+     "~50% lower word error rate vs. predecessor. Improved multilingual performance. "
+     "4\u00d7 reduction in hallucinations on silence \u2013 ideal for noisy, real-world audio."),
+    ("gpt-realtime-mini-2025-12-15 (Speech-to-Speech)",
+     "Feature parity with full GPT Realtime model in instruction-following & function-calling. "
+     "Audio in \u2192 audio out, API-only."),
+    ("gpt-4o-mini-tts-2025-12-15 (Text-to-Speech)",
+     "New benchmark for multilingual synthesis. More natural, human-like speech with "
+     "fewer artifacts and improved speaker similarity."),
+]
+_add_bullet_slide(slide, items, Inches(1.5))
+
+
+# ── Slide 7: AI Infrastructure & Hardware ────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -184,14 +262,20 @@ _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
 _accent_bar(slide, Inches(1.1))
 
 items = [
+    ("Maia 200 \u2013 Custom AI Inference Accelerator (Jan 26, 2026)",
+     "Microsoft\u2019s next-gen custom silicon engineered to dramatically improve the economics "
+     "of AI token generation. Gives Azure an edge in running models faster & more cost-efficiently."),
+    ("NVIDIA Rubin Platform Readiness \u2013 CES 2026 (Jan 5, 2026)",
+     "Azure superfactories pre-engineered for Vera Rubin NVL72 racks: 50 PF/chip, 3.6 EF/rack (5\u00d7 jump). "
+     "6th-gen NVLink (~260 TB/s), ConnectX-9 1,600 Gb/s, HBM4 thermal planning already integrated."),
     ("High-Temperature Superconductors (Feb 10, 2026)",
-     "Microsoft is exploring superconductor technology to transform datacenter power "
-     "infrastructure, addressing rising demands from AI-intensive workloads."),
+     "Exploring superconductor technology to transform datacenter power infrastructure, "
+     "addressing rising power demands from AI workloads."),
 ]
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 5: Azure Data Services ────────────────────────────────────────────
+# ── Slide 8: Azure Data Services ────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -215,7 +299,7 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 6: Agentic AI ─────────────────────────────────────────────────────
+# ── Slide 9: Agentic AI ─────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -228,6 +312,9 @@ items = [
     ("Agentic Cloud Operations (Feb 11, 2026)",
      "New paradigm where AI agents assist with cloud operations \u2013 monitoring, "
      "incident response & management tasks powered by the Foundry platform."),
+    ("Microsoft Marketplace for AI & Agent Strategy (Jan 15, 2026)",
+     "New marketplace category helping organizations embed AI across every layer of operations. "
+     "Accelerate delivery, scale efficiently & unlock new business potential."),
     ("Pantone \u2013 Agentic AI Case Study (Feb 12, 2026)",
      "Pantone launched an AI-powered experience combining an AI-ready database with "
      "agentic workflows, iterating rapidly on real user feedback."),
@@ -238,7 +325,7 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 7: Deprecations – Imminent Retirements ────────────────────────────
+# ── Slide 10: Deprecations – Already Retired & Upcoming ─────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -247,24 +334,25 @@ _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
               "Model Deprecations & Retirements", font_size=34, bold=True, color=WHITE)
 _accent_bar(slide, Inches(1.1))
 
-# Table – imminent retirements
-ret_rows, ret_cols = 7, 4
+# Table – key retirements
+ret_rows, ret_cols = 8, 4
 tbl_shape = slide.shapes.add_table(ret_rows, ret_cols, Inches(0.5), Inches(1.5),
-                                    Inches(12.3), Inches(3.8))
+                                    Inches(12.3), Inches(4.6))
 ret_table = tbl_shape.table
-ret_table.columns[0].width = Inches(3.8)
-ret_table.columns[1].width = Inches(2.5)
-ret_table.columns[2].width = Inches(3.2)
+ret_table.columns[0].width = Inches(3.5)
+ret_table.columns[1].width = Inches(2.2)
+ret_table.columns[2].width = Inches(3.8)
 ret_table.columns[3].width = Inches(2.8)
 
-ret_headers = ["Model", "Retirement", "Auto-Upgrade", "Upgrade Path"]
+ret_headers = ["Model", "Type", "Deprecation", "Retirement"]
 ret_data = [
-    ["gpt-5-chat (preview)", "Mar 1, 2026", "\u2013", "gpt-5.2-chat"],
-    ["gpt-4o Standard (all GA)", "Mar 31, 2026", "Starts Mar 9", "gpt-5.1"],
-    ["gpt-4o-mini Standard", "Mar 31, 2026", "Starts Mar 9", "gpt-4.1-mini"],
-    ["o1-pro", "Sep 18, 2026", "\u2013", "o3-pro"],
-    ["gpt-4.1 family", "Oct 14, 2026", "\u2013", "gpt-5 / gpt-5-mini / gpt-5-nano"],
-    ["o3 / o4-mini", "Oct 16, 2026", "\u2013", "TBD"],
+    ["o1 (2024-12-17)", "Standard", "Dec 17, 2025", "Jul 15, 2026"],
+    ["o3-mini (2025-01-31)", "Standard", "Jan 31, 2026", "Aug 2, 2026"],
+    ["gpt-5-chat (preview)", "Preview", "\u2013", "Mar 1, 2026"],
+    ["gpt-4o (all GA versions)", "Standard", "\u2013", "Mar 31, 2026"],
+    ["gpt-4o-mini (2024-07-18)", "Standard", "\u2013", "Mar 31, 2026"],
+    ["gpt-4.1 family", "GA", "Apr 14, 2026 (dep)", "Oct 14, 2026"],
+    ["gpt-4.1-nano", "GA", "Apr 14, 2026 (dep)", "Oct 14, 2026"],
 ]
 
 for i, h in enumerate(ret_headers):
@@ -276,12 +364,12 @@ for r, row_data in enumerate(ret_data):
     for c, val in enumerate(row_data):
         _style_cell(ret_table.cell(r + 1, c), val, bg=bg, fg=WHITE)
 
-_add_text_box(slide, Inches(0.5), Inches(5.5), Inches(12.3), Inches(0.4),
-              "\u26a0 Auto-upgrades for gpt-4o Standard begin Mar 9, 2026. Review your deployments & test now.",
+_add_text_box(slide, Inches(0.5), Inches(6.3), Inches(12.3), Inches(0.4),
+              "Auto-upgrades for gpt-4o Standard begin Mar 9, 2026. Review your deployments & test with latest versions.",
               font_size=13, color=RGBColor(0xFF, 0xA5, 0x00))
 
 
-# ── Slide 8: Deprecation Action Items ───────────────────────────────────────
+# ── Slide 11: Deprecation Action Items ──────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -291,51 +379,53 @@ _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
 _accent_bar(slide, Inches(1.1))
 
 items = [
-    ("Immediate: Migrate gpt-5-chat Previews",
-     "gpt-5-chat preview retires Mar 1, 2026. Switch to gpt-5.2-chat now."),
-    ("By Mar 9: Test gpt-4o & gpt-4o-mini Workloads",
-     "Auto-upgrades begin this date. Validate application behaviour on the latest GA models."),
-    ("By Mar 31: Complete Standard Migrations",
-     "All Standard gpt-4o / gpt-4o-mini deployments must be migrated or tested."),
+    ("Audit Current Deployments",
+     "Identify all deployments using deprecated or soon-to-retire model versions. "
+     "Prioritise gpt-4o Standard and o1 workloads."),
+    ("Test with Latest GA Versions",
+     "Validate application behaviour on current GA models before auto-upgrades "
+     "take effect (gpt-4o auto-upgrade starts Mar 9, 2026)."),
     ("Migrate Fine-Tuned Models",
      "Fine-tuned deployments on retired bases are NOT auto-upgraded. "
      "Re-train on a supported base model before the retirement date."),
     ("Monitor the Retirements Page",
-     "Bookmark learn.microsoft.com/azure/ai-foundry/openai/concepts/model-retirements."),
+     "Bookmark learn.microsoft.com/azure/ai-foundry/openai/concepts/model-retirements "
+     "for the latest schedule and replacement recommendations."),
 ]
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 9: February 2026 Quick-Reference Table ────────────────────────────
+# ── Slide 12: Model Quick-Reference Table ───────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
 _add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
 _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
-              "Key February 2026 Updates \u2013 Quick Reference", font_size=34, bold=True, color=WHITE)
+              "Key Model Releases \u2013 Quick Reference", font_size=34, bold=True, color=WHITE)
 _accent_bar(slide, Inches(1.1))
 
 # Table
-rows, cols = 8, 4
+rows, cols = 9, 4
 tbl_shape = slide.shapes.add_table(rows, cols, Inches(0.5), Inches(1.5),
-                                    Inches(12.3), Inches(4.8))
+                                    Inches(12.3), Inches(5.0))
 table = tbl_shape.table
 
 # Column widths
 table.columns[0].width = Inches(3.5)
-table.columns[1].width = Inches(2.0)
-table.columns[2].width = Inches(5.0)
+table.columns[1].width = Inches(2.5)
+table.columns[2].width = Inches(4.5)
 table.columns[3].width = Inches(1.8)
 
-headers = ["Item", "Category", "Highlight", "Date"]
+headers = ["Model", "Type", "Key Improvement", "Status"]
 data = [
-    ["Claude Sonnet 4.6", "Model Release", "Frontier performance for coding & agents at scale", "Feb 17"],
-    ["Claude Opus 4.6", "Model Release", "End-to-end autonomous task execution", "Feb 5"],
-    ["PostgreSQL for AI", "Data Service", "DiskANN, MCP server, Copilot SQL, HorizonDB preview", "Feb 2"],
-    ["High-Temp Superconductors", "Infrastructure", "Exploring superconductors for datacenter power", "Feb 10"],
-    ["Agentic Cloud Ops", "Framework", "AI agents for cloud operations & incident response", "Feb 11"],
-    ["Pantone Case Study", "Ecosystem", "Agentic AI + AI-ready database in production", "Feb 12"],
-    ["Agents League", "Community", "Developer challenge for building AI agents", "Feb 16\u201327"],
+    ["GPT-5.2", "Reasoning/Chat", "Deeper logical chains, agentic execution", "GA"],
+    ["GPT-5.2-Chat", "Chat", "Everyday workhorse, improved info-seeking", "GA"],
+    ["Claude Opus 4.6", "Reasoning/Coding", "End-to-end autonomous task execution", "GA"],
+    ["Claude Sonnet 4.6", "Coding/Agents", "Frontier performance at scale", "GA"],
+    ["GPT-image-1.5", "Image Gen", "Inpainting, face preservation, 1536px", "Limited"],
+    ["gpt-4o-mini-transcribe", "ASR", "50% lower WER, 4\u00d7 less hallucinations", "GA"],
+    ["gpt-realtime-mini", "Speech-to-Speech", "Feature parity with full Realtime", "GA"],
+    ["gpt-4o-mini-tts", "Text-to-Speech", "Best multilingual synthesis", "GA"],
 ]
 
 for i, h in enumerate(headers):
@@ -348,7 +438,7 @@ for r, row_data in enumerate(data):
         _style_cell(table.cell(r + 1, c), val, bg=bg, fg=WHITE)
 
 
-# ── Slide 10: Key Links ─────────────────────────────────────────────────────
+# ── Slide 13: Key Links ─────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -378,7 +468,7 @@ for name, url in links:
     y += Inches(0.55)
 
 
-# ── Slide 11: Closing ───────────────────────────────────────────────────────
+# ── Slide 14: Closing ───────────────────────────────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -397,6 +487,6 @@ _add_text_box(slide, Inches(0.8), Inches(5.5), Inches(11.5), Inches(0.6),
 
 # ── Save ─────────────────────────────────────────────────────────────────────
 
-output = r"c:\Users\petfue\Repos\whats-new-in-microsoft-ai\whats-new-microsoft-ai-feb2026.pptx"
+output = r"c:\Users\petfue\Repos\whats-new-in-microsoft-ai\whats-new-microsoft-ai-dec2025-feb2026.pptx"
 prs.save(output)
 print(f"Saved: {output}")
