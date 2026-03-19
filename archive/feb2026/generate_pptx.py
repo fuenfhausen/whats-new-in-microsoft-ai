@@ -1,4 +1,4 @@
-"""Generate a PowerPoint deck summarizing what's new in Microsoft AI (Feb 1 – Mar 19, 2026)."""
+"""Generate a PowerPoint deck summarizing what's new in Microsoft AI (February 2026)."""
 
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
@@ -133,7 +133,7 @@ _add_text_box(slide, Inches(0.8), Inches(3.0), Inches(11), Inches(1),
               "Microsoft Foundry, Azure OpenAI Service & Related Platforms",
               font_size=24, color=LIGHT_GRAY)
 _add_text_box(slide, Inches(0.8), Inches(4.2), Inches(11), Inches(0.8),
-              "February 1 – March 19, 2026", font_size=20, color=ACCENT)
+              "February 2026", font_size=20, color=ACCENT)
 _add_text_box(slide, Inches(0.8), Inches(6.2), Inches(11), Inches(0.6),
               "Sources: Azure Blog, Microsoft Learn, Microsoft Tech Community",
               font_size=14, color=LIGHT_GRAY)
@@ -154,8 +154,8 @@ topics = [
     ("3.", "Azure Data Services for AI"),
     ("4.", "Agentic AI & Frameworks"),
     ("5.", "Foundry Blog Highlights"),
-    ("6.", "Model Deprecations & Retirements (incl. March milestones)"),
-    ("7.", "Key Updates Quick-Reference Table"),
+    ("6.", "Model Deprecations & Retirements"),
+    ("7.", "Key February 2026 Quick-Reference Table"),
 ]
 y = Inches(1.8)
 for num, topic in topics:
@@ -265,7 +265,7 @@ slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
 _add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
 _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
-              "Foundry Blog Highlights", font_size=34, bold=True, color=WHITE)
+              "Foundry Blog Highlights (Feb 2026)", font_size=34, bold=True, color=WHITE)
 _accent_bar(slide, Inches(1.1))
 
 items = [
@@ -291,7 +291,7 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 8: Deprecations – Completed Events & Upcoming ─────────────────────
+# ── Slide 8: Deprecations – Imminent Retirements ────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
@@ -300,68 +300,37 @@ _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
               "Model Deprecations & Retirements", font_size=34, bold=True, color=WHITE)
 _accent_bar(slide, Inches(1.1))
 
-_add_text_box(slide, Inches(0.5), Inches(1.3), Inches(12), Inches(0.4),
-              "Recently Completed (Mar 1–19, 2026)",
-              font_size=18, bold=True, color=ORANGE)
-
-# Table – completed events
-comp_rows, comp_cols = 4, 4
-tbl1 = slide.shapes.add_table(comp_rows, comp_cols, Inches(0.5), Inches(1.8),
-                               Inches(12.3), Inches(1.8))
-comp_table = tbl1.table
-comp_table.columns[0].width = Inches(3.8)
-comp_table.columns[1].width = Inches(2.2)
-comp_table.columns[2].width = Inches(3.5)
-comp_table.columns[3].width = Inches(2.8)
-
-comp_headers = ["Model", "Event", "Date", "Notes"]
-comp_data = [
-    ["gpt-5-chat (preview)", "Retired", "Mar 1, 2026", "Upgrade to gpt-5.2-chat"],
-    ["gpt-4o / gpt-4o-mini Std", "Auto-upgrade started", "Mar 9, 2026", "\u2192 gpt-5.1 / gpt-4.1-mini"],
-    ["o1-pro (2025-03-19)", "Deprecated", "Mar 19, 2026", "Retires Sep 18 \u2192 o3-pro"],
-]
-
-for i, h in enumerate(comp_headers):
-    _style_cell(comp_table.cell(0, i), h, bold=True, bg=ACCENT, fg=WHITE, size=14)
-
-row_bg = [RGBColor(0x2A, 0x2A, 0x2A), RGBColor(0x22, 0x22, 0x22)]
-for r, row_data in enumerate(comp_data):
-    bg = row_bg[r % 2]
-    for c, val in enumerate(row_data):
-        _style_cell(comp_table.cell(r + 1, c), val, bg=bg, fg=WHITE)
-
-# Upcoming retirements sub-heading
-_add_text_box(slide, Inches(0.5), Inches(3.8), Inches(12), Inches(0.4),
-              "Upcoming Retirements & Deprecations",
-              font_size=18, bold=True, color=ORANGE)
-
-ret_rows, ret_cols = 5, 4
-tbl2 = slide.shapes.add_table(ret_rows, ret_cols, Inches(0.5), Inches(4.3),
-                               Inches(12.3), Inches(2.2))
-ret_table = tbl2.table
+# Table – imminent retirements
+ret_rows, ret_cols = 7, 4
+tbl_shape = slide.shapes.add_table(ret_rows, ret_cols, Inches(0.5), Inches(1.5),
+                                    Inches(12.3), Inches(3.8))
+ret_table = tbl_shape.table
 ret_table.columns[0].width = Inches(3.8)
 ret_table.columns[1].width = Inches(2.5)
 ret_table.columns[2].width = Inches(3.2)
 ret_table.columns[3].width = Inches(2.8)
 
-ret_headers = ["Model", "Retirement", "Deprecation", "Upgrade Path"]
+ret_headers = ["Model", "Retirement", "Auto-Upgrade", "Upgrade Path"]
 ret_data = [
-    ["gpt-4o / gpt-4o-mini Std", "Mar 31, 2026", "Auto-upgrade started Mar 9", "gpt-5.1 / gpt-4.1-mini"],
-    ["gpt-4.1 family", "Oct 14, 2026", "Apr 14, 2026", "gpt-5 / gpt-5-mini / gpt-5-nano"],
-    ["o3 / o4-mini", "Oct 16, 2026", "Apr 16, 2026", "TBD"],
-    ["codex-mini / o3-pro", "Nov–Dec 2026", "May–Jun 2026", "TBD"],
+    ["gpt-5-chat (preview)", "Mar 1, 2026", "\u2013", "gpt-5.2-chat"],
+    ["gpt-4o Standard (all GA)", "Mar 31, 2026", "Starts Mar 9", "gpt-5.1"],
+    ["gpt-4o-mini Standard", "Mar 31, 2026", "Starts Mar 9", "gpt-4.1-mini"],
+    ["o1-pro", "Sep 18, 2026", "\u2013", "o3-pro"],
+    ["gpt-4.1 family", "Oct 14, 2026", "\u2013", "gpt-5 / gpt-5-mini / gpt-5-nano"],
+    ["o3 / o4-mini", "Oct 16, 2026", "\u2013", "TBD"],
 ]
 
 for i, h in enumerate(ret_headers):
     _style_cell(ret_table.cell(0, i), h, bold=True, bg=ACCENT, fg=WHITE, size=14)
 
+row_bg = [RGBColor(0x2A, 0x2A, 0x2A), RGBColor(0x22, 0x22, 0x22)]
 for r, row_data in enumerate(ret_data):
     bg = row_bg[r % 2]
     for c, val in enumerate(row_data):
         _style_cell(ret_table.cell(r + 1, c), val, bg=bg, fg=WHITE)
 
-_add_text_box(slide, Inches(0.5), Inches(6.7), Inches(12.3), Inches(0.4),
-              "\u26a0 gpt-4o Standard retires Mar 31. Fine-tuned deployments are NOT auto-upgraded \u2013 re-train now.",
+_add_text_box(slide, Inches(0.5), Inches(5.5), Inches(12.3), Inches(0.4),
+              "\u26a0 Auto-upgrades for gpt-4o Standard begin Mar 9, 2026. Review your deployments & test now.",
               font_size=13, color=RGBColor(0xFF, 0xA5, 0x00))
 
 
@@ -375,14 +344,12 @@ _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
 _accent_bar(slide, Inches(1.1))
 
 items = [
-    ("By Mar 31: Complete gpt-4o / gpt-4o-mini Standard Migrations",
-     "Auto-upgrades to gpt-5.1 / gpt-4.1-mini started Mar 9. "
-     "Validate application behaviour now; full retirement on Mar 31."),
-    ("Plan for Apr 14: gpt-4.1 Family Deprecation",
-     "No new deployments after Apr 14, 2026. Retirement Oct 14, 2026. "
-     "Upgrade path: gpt-5, gpt-5-mini, gpt-5-nano."),
-    ("Plan for Apr 16: o3 / o4-mini Deprecation",
-     "No new deployments after Apr 16, 2026. Retirement Oct 16, 2026."),
+    ("Immediate: Migrate gpt-5-chat Previews",
+     "gpt-5-chat preview retires Mar 1, 2026. Switch to gpt-5.2-chat now."),
+    ("By Mar 9: Test gpt-4o & gpt-4o-mini Workloads",
+     "Auto-upgrades begin this date. Validate application behaviour on the latest GA models."),
+    ("By Mar 31: Complete Standard Migrations",
+     "All Standard gpt-4o / gpt-4o-mini deployments must be migrated or tested."),
     ("Migrate Fine-Tuned Models",
      "Fine-tuned deployments on retired bases are NOT auto-upgraded. "
      "Re-train on a supported base model before the retirement date."),
@@ -393,20 +360,19 @@ items = [
 _add_bullet_slide(slide, items, Inches(1.5))
 
 
-# ── Slide 10: Quick-Reference Table ─────────────────────────────────────────
+# ── Slide 10: February 2026 Quick-Reference Table ────────────────────────────
 
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 _set_bg(slide, DARK_BG)
 _add_rect(slide, 0, 0, W, Inches(0.15), ACCENT)
 _add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
-              "Key Updates \u2013 Quick Reference (Feb 1 \u2013 Mar 19, 2026)",
-              font_size=34, bold=True, color=WHITE)
+              "Key February 2026 Updates \u2013 Quick Reference", font_size=34, bold=True, color=WHITE)
 _accent_bar(slide, Inches(1.1))
 
 # Table
-rows, cols = 15, 4
+rows, cols = 12, 4
 tbl_shape = slide.shapes.add_table(rows, cols, Inches(0.5), Inches(1.5),
-                                    Inches(12.3), Inches(5.6))
+                                    Inches(12.3), Inches(5.4))
 table = tbl_shape.table
 
 # Column widths
@@ -439,9 +405,6 @@ data = [
      "https://devblogs.microsoft.com/foundry/dpo-fine-tuning-using-microsoft-foundry-sdk/"],
     ["Fine-Tuning Guide", "Foundry Blog", "When & how to move beyond prompting", "Feb 6",
      "https://devblogs.microsoft.com/foundry/beyond-the-prompt-why-and-how-to-fine-tune-your-own-models/"],
-    ["gpt-5-chat preview retired", "Deprecation", "Preview versions removed; use gpt-5.2-chat", "Mar 1"],
-    ["gpt-4o auto-upgrade", "Deprecation", "Standard deployments auto-upgrading to gpt-5.1", "Mar 9"],
-    ["o1-pro deprecated", "Deprecation", "No new deployments; retires Sep 18 \u2192 o3-pro", "Mar 19"],
 ]
 
 for i, h in enumerate(headers):
@@ -502,7 +465,7 @@ _add_text_box(slide, Inches(0.8), Inches(3.8), Inches(11.5), Inches(0.8),
               font_size=24, color=ACCENT, alignment=PP_ALIGN.CENTER,
               hyperlink="https://ai.azure.com")
 _add_text_box(slide, Inches(0.8), Inches(5.5), Inches(11.5), Inches(0.6),
-              "Compiled from official Microsoft sources \u2013 Feb 1 \u2013 Mar 19, 2026",
+              "Compiled from official Microsoft sources \u2013 February 2026",
               font_size=14, color=LIGHT_GRAY, alignment=PP_ALIGN.CENTER)
 
 

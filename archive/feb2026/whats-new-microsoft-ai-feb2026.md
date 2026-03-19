@@ -1,7 +1,7 @@
 # What's New in Microsoft AI, Microsoft Foundry & Related Platforms
 
-**Coverage Period:** February 1 – March 19, 2026
-**Last Updated:** March 19, 2026
+**Coverage Period:** February 2026
+**Last Updated:** February 26, 2026
 
 ---
 
@@ -22,7 +22,7 @@
 
 ### Microsoft Foundry Platform Momentum
 
-- **Date:** February–March 2026
+- **Date:** February 2026
 - **Description:** Microsoft Foundry (formerly Azure AI Foundry) continues its momentum as the unified platform for building, deploying, and governing AI applications and multi-agent systems at scale. The platform encompasses Foundry IQ (secure data grounding API), Foundry Tools (1,400+ pre-built connectors), Foundry Agent Service (multi-agent orchestration), Foundry Control Plane (governance & observability), Foundry Models (model catalog), and Foundry Local (on-device AI). Over 80,000 enterprises are now leveraging Foundry.
 - **Affected Services:** Microsoft Foundry
 - **Links:**
@@ -48,59 +48,6 @@
 - **Affected Services:** Microsoft Foundry, Azure AI Model Catalog
 - **Links:**
   - [Blog Announcement](https://azure.microsoft.com/en-us/blog/claude-opus-4-6-anthropics-powerful-model-for-coding-agents-and-enterprise-workflows-is-now-available-in-microsoft-foundry-on-azure/)
-
-### o1-pro Deprecated
-
-- **Date:** March 19, 2026
-- **Description:** The o1-pro model (version 2025-03-19) reaches its deprecation date today. It remains functional for existing deployments until its retirement on September 18, 2026, but is no longer available for new deployments. The recommended upgrade path is o3-pro.
-- **Affected Services:** Azure OpenAI Service
-- **Links:**
-  - [Model Retirements](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements)
-
----
-
-## Model Deprecations & Retirements
-
-Understanding Azure OpenAI model lifecycles is critical for planning. **Deprecation** means a model is no longer available to new customers but continues working for existing deployments. **Retirement** means the model is fully removed and all deployments return errors.
-
-> **Full reference:** [Azure OpenAI Model Deprecations & Retirements](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements)
-
-### Recently Completed Retirements & Auto-Upgrades
-
-| Model | Event | Date | Notes |
-|-------|-------|------|-------|
-| gpt-5-chat (preview) 2025-08-07 | Retired | Mar 1, 2026 | Upgrade to gpt-5.2-chat |
-| gpt-5-chat (preview) 2025-10-03 | Retired | Mar 1, 2026 | Upgrade to gpt-5.2-chat |
-| gpt-4o Standard (2024-05-13, 2024-08-06) | Auto-upgrade started | Mar 9, 2026 | Upgrading to gpt-5.1 |
-| gpt-4o-mini Standard (2024-07-18) | Auto-upgrade started | Mar 9, 2026 | Upgrading to gpt-4.1-mini |
-| o1-pro (2025-03-19) | Deprecated | Mar 19, 2026 | No new deployments; retires Sep 18, 2026 → o3-pro |
-
-### Upcoming Retirements (Action Required)
-
-| Model | Version | Retirement Date | Auto-Upgrade | Upgrade Path |
-|-------|---------|-----------------|--------------|--------------|
-| gpt-4o Standard (all GA) | 2024-05-13, 2024-08-06 | Mar 31, 2026 | Started Mar 9 | gpt-5.1 |
-| gpt-4o-mini Standard | 2024-07-18 | Mar 31, 2026 | Started Mar 9 | gpt-4.1-mini |
-
-### Upcoming GA Deprecations (2026)
-
-| Model | Version | Deprecation Date | Retirement Date | Upgrade Path |
-|-------|---------|------------------|-----------------|--------------|
-| gpt-4.1 | 2025-04-14 | Apr 14, 2026 | Oct 14, 2026 | gpt-5 |
-| gpt-4.1-mini | 2025-04-14 | Apr 14, 2026 | Oct 14, 2026 | gpt-5-mini |
-| gpt-4.1-nano | 2025-04-14 | Apr 14, 2026 | Oct 14, 2026 | gpt-5-nano |
-| o3 | 2025-04-16 | Apr 16, 2026 | Oct 16, 2026 | TBD |
-| o4-mini | 2025-04-16 | Apr 16, 2026 | Oct 16, 2026 | TBD |
-| codex-mini | 2025-05-16 | May 16, 2026 | Nov 15, 2026 | TBD |
-| o3-pro | 2025-06-10 | Jun 10, 2026 | Dec 10, 2026 | TBD |
-
-### Key Action Items
-
-1. **By Mar 31, 2026:** Ensure all Standard gpt-4o / gpt-4o-mini deployments are migrated or tested with auto-upgraded versions (gpt-5.1 / gpt-4.1-mini). Auto-upgrades started Mar 9.
-2. **Plan for Apr 14, 2026:** gpt-4.1 family deprecation — no new deployments after that date; retires Oct 14, 2026.
-3. **Plan for Apr 16, 2026:** o3 / o4-mini deprecation — no new deployments after that date; retires Oct 16, 2026.
-4. **Plan ahead:** o1 retires Jul 15, 2026 (→ o3); o3-mini retires Aug 2, 2026 (→ o4-mini).
-5. **Fine-tuned models:** Fine-tuned deployments on retired bases are NOT auto-upgraded. Re-train on a supported base model before the retirement date.
 
 ---
 
@@ -160,7 +107,7 @@ Understanding Azure OpenAI model lifecycles is critical for planning. **Deprecat
 
 ## Foundry Blog Highlights
 
-Key posts from the [Microsoft Foundry Blog](https://devblogs.microsoft.com/foundry/) published in this period.
+Key posts from the [Microsoft Foundry Blog](https://devblogs.microsoft.com/foundry/) published in February 2026.
 
 ### Microsoft Agent Framework Reaches Release Candidate
 
@@ -198,6 +145,43 @@ Key posts from the [Microsoft Foundry Blog](https://devblogs.microsoft.com/found
 
 ---
 
+## Model Deprecations & Retirements
+
+Understanding Azure OpenAI model lifecycles is critical for planning. **Deprecation** means a model is no longer available to new customers but continues working for existing deployments. **Retirement** means the model is fully removed and all deployments return errors.
+
+> **Full reference:** [Azure OpenAI Model Deprecations & Retirements](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements)
+
+### Imminent Retirements (Action Required Now)
+
+| Model | Version | Retirement Date | Upgrade Path |
+|-------|---------|-----------------|--------------|
+| gpt-5-chat (preview) | 2025-08-07 | Mar 1, 2026 | gpt-5.2-chat |
+| gpt-5-chat (preview) | 2025-10-03 | Mar 1, 2026 | gpt-5.2-chat |
+| gpt-4o (2024-05-13, 2024-08-06) Standard | — | Mar 31, 2026 (auto-upgrade starts Mar 9) | gpt-5.1 |
+| gpt-4o-mini (2024-07-18) Standard | — | Mar 31, 2026 (auto-upgrade starts Mar 9) | gpt-4.1-mini |
+
+### Upcoming GA Deprecations (2026)
+
+| Model | Version | Deprecation Date | Retirement Date | Upgrade Path |
+|-------|---------|------------------|-----------------|--------------|
+| o1-pro | 2025-03-19 | Mar 19, 2026 | Sep 18, 2026 | o3-pro |
+| gpt-4.1 | 2025-04-14 | Apr 14, 2026 | Oct 14, 2026 | gpt-5 |
+| gpt-4.1-mini | 2025-04-14 | Apr 14, 2026 | Oct 14, 2026 | gpt-5-mini |
+| gpt-4.1-nano | 2025-04-14 | Apr 14, 2026 | Oct 14, 2026 | gpt-5-nano |
+| o3 | 2025-04-16 | Apr 16, 2026 | Oct 16, 2026 | TBD |
+| o4-mini | 2025-04-16 | Apr 16, 2026 | Oct 16, 2026 | TBD |
+| codex-mini | 2025-05-16 | May 16, 2026 | Nov 15, 2026 | TBD |
+| o3-pro | 2025-06-10 | Jun 10, 2026 | Dec 10, 2026 | TBD |
+
+### Key Action Items
+
+1. **Immediate (by Mar 1, 2026):** Migrate gpt-5-chat preview deployments to gpt-5.2-chat before retirement.
+2. **By Mar 9, 2026:** Test Standard gpt-4o and gpt-4o-mini workloads — auto-upgrades begin this date.
+3. **By Mar 31, 2026:** Ensure all Standard gpt-4o / gpt-4o-mini deployments are migrated or tested with auto-upgraded versions.
+4. **Plan ahead:** o1 retires Jul 15, 2026 (→ o3); o3-mini retires Aug 2, 2026 (→ o4-mini).
+
+---
+
 ## Industry & Ecosystem
 
 ### Agents League Community Challenge
@@ -210,7 +194,7 @@ Key posts from the [Microsoft Foundry Blog](https://devblogs.microsoft.com/found
 
 ---
 
-## Quick Reference: Key Updates (Feb 1 – Mar 19, 2026)
+## Quick Reference: Key February 2026 Updates
 
 | Item | Type | Date | Highlight |
 |------|------|------|-----------|
@@ -225,9 +209,6 @@ Key posts from the [Microsoft Foundry Blog](https://devblogs.microsoft.com/found
 | Foundry What's New | Foundry Blog | Feb 18 | Comprehensive Dec/Jan roundup (GPT-5.2, Codex Max, A2A, Memory, MCP) |
 | DPO Fine-Tuning Guide | Foundry Blog | Feb 13 | DPO fine-tuning walkthrough using Foundry SDK |
 | Fine-Tuning Guide | Foundry Blog | Feb 6 | When & how to move beyond prompting to fine-tuning |
-| gpt-5-chat preview retired | Deprecation | Mar 1 | Preview versions removed; upgrade to gpt-5.2-chat |
-| gpt-4o / gpt-4o-mini auto-upgrade | Deprecation | Mar 9 | Standard deployments auto-upgrading to gpt-5.1 / gpt-4.1-mini |
-| o1-pro deprecated | Deprecation | Mar 19 | No new deployments; retires Sep 18, 2026 → o3-pro |
 
 ---
 
